@@ -1,0 +1,60 @@
+<html >
+<head>
+
+</head>
+<body>
+
+<h1>Operaciones con Vectores</h1>
+
+<script>
+function generarVectorAleatorio(N) {
+    let vector = [];
+    for (let i = 0; i < N; i++) {
+        vector.push(Math.floor(Math.random() * 32000));
+    }
+    return vector;
+}
+
+function calcularPromedio(vector) {
+    let suma = vector.reduce((acc, val) => acc + val, 0);
+    return suma / vector.length;
+}
+
+function generarVectorMayoresAlPromedio(vector, promedio) {
+    return vector.filter(elemento => elemento > promedio);
+}
+
+function contarMultiplosDosTres(vector) {
+    return vector.filter(elemento => elemento % 2 === 0 && elemento % 3 === 0).length;
+}
+
+function calcularSuma(vector) {
+    return vector.reduce((acc, val) => acc + val, 0);
+}
+
+function generarVectorMultiplicadoPorDos(vector) {
+    return vector.map(elemento => elemento * 2);
+}
+
+function mostrarResultados() {
+    let N = parseInt(prompt("Ingrese el tamaño del vector:"));
+    let A = generarVectorAleatorio(N);
+    let promedio = calcularPromedio(A);
+    let B = generarVectorMayoresAlPromedio(A, promedio);
+    let cantidadMultiplosDosTres = contarMultiplosDosTres(A);
+    let sumaElementos = calcularSuma(A);
+    let C = generarVectorMultiplicadoPorDos(A);
+
+    document.write("<p>Vector A: " + A.join(", ") + "</p>");
+    document.write("<p>Promedio de elementos en A: " + promedio.toFixed(2) + "</p>");
+    document.write("<p>Vector B (mayores al promedio): " + B.join(", ") + "</p>");
+    document.write("<p>Cantidad de elementos múltiplos de 2 y 3 en A: " + cantidadMultiplosDosTres + "</p>");
+    document.write("<p>Suma de todos los elementos en A: " + sumaElementos + "</p>");
+    document.write("<p>Vector C (elementos de A multiplicados por 2): " + C.join(", ") + "</p>");
+}
+
+mostrarResultados();
+</script>
+
+</body>
+</html>
